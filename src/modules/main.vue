@@ -14,12 +14,24 @@
         </span>
       </el-dialog>
       <my-component/>
+      <slotTest>
+          <div slot="s2">插入的内容</div>
+          <div slot="s1">插入的内容2</div>
+          <div>(*******)</div>
+          <div slot="xxx">fuck you!</div>
+            <p slot-scope="props"   slot="scopeSlot">
+                <span>hello from parent</span>
+                <span>{{ props.text }}</span>
+            </p>
+      </slotTest>
   </div>
 </template>
 
 <script>
+import slotTest from './slotTest.vue'
 export default {
     name: 'Main',
+    components: {slotTest},
     directives: {
         customDir: {
             bind: function (el, binding, vnode, oldVNode) {

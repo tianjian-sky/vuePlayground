@@ -6,6 +6,8 @@ import Main from '@/modules/Main'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import { Plugin1, Plugin2 } from '../plugins'
+import shiftComponent from '@/modules/shiftComponent'
+import watchComp from '@/modules/watch'
 
 Vue.use(Router)
 Vue.use(ElementUI)
@@ -59,6 +61,16 @@ export default new Router({
             path: '/main',
             name: 'main',
             component: Main
+        },
+        {
+            path: '/v-is',
+            name: 'shiftComponent',
+            component: shiftComponent
+        },
+        {
+            path: '/v-watch',
+            name: 'watchComp',
+            component: watchComp
         }
     ]
 })
