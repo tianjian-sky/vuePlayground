@@ -1,3 +1,11 @@
+# watch
+
+监听数据变化，watch框架？
+
+* deep 属性
+* immediate属性： 绑定watch后立即执行一次watchHandler
+
+```javascript
 <template>
     <div @click="changeValue">
          <h3>a: {{a}}</h3>
@@ -28,15 +36,6 @@ export default {
             }
         }
     },
-    mounted: function () {
-        for (let i = 0; i < 10; i++) {
-            this.$data.b++
-        }
-        console.log(this)
-    },
-    updated: function () {
-        console.log('updated:', this)
-    },
     watch: {
         a: function (val, oldVal) {
             console.log('new: %s, old: %s', val, oldVal)
@@ -63,3 +62,5 @@ export default {
 }
 
 </script>
+
+```

@@ -71,7 +71,7 @@ const myComp1 = Vue.component('myComp1',{
         }
     },
     template: '<h3 @click="clickHandler">hello i am 1<br/>I\'m clicked {{clicked}}</h3>'
-})
+})v
 const myComp2 = Vue.component('myComp2',{
     template: '<h3>hello i am 2</h3>'
 })
