@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import { Plugin1, Plugin2 } from '../plugins'
 import shiftComponent from '@/modules/shiftComponent'
 import watchComp from '@/modules/watch'
+import TestCreatreElmentComp from '@/modules/testCreateElement'
 
 Vue.use(Router)
 Vue.use(ElementUI)
@@ -44,7 +45,7 @@ Vue.mixin({
 Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
     console.log(toVal, fromVal)
 }
-
+console.log('<><<>>><>><>', Login, new TestCreatreElmentComp())
 export default new Router({
     routes: [
         {
@@ -71,6 +72,11 @@ export default new Router({
             path: '/v-watch',
             name: 'watchComp',
             component: watchComp
+        },
+        {
+            path: '/createElement',
+            name: 'testCreateElement',
+            component: TestCreatreElmentComp
         }
     ]
 })
