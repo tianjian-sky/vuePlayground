@@ -9,6 +9,8 @@ import { Plugin1, Plugin2 } from '../plugins'
 import shiftComponent from '@/modules/shiftComponent'
 import watchComp from '@/modules/watch'
 import TestCreatreElmentComp from '@/modules/testCreateElement'
+import RouterTest from '@/modules/routerTest'
+import subRouterComp from '@/modules/subRouterComp'
 
 Vue.use(Router)
 Vue.use(ElementUI)
@@ -77,6 +79,19 @@ export default new Router({
             path: '/createElement',
             name: 'testCreateElement',
             component: TestCreatreElmentComp
+        },
+        {
+            path: '/:userId/routerTest/:password',
+            name: 'routerTest',
+            component: RouterTest,
+            children: [
+                {
+                    // 当 /user/:id/profile 匹配成功，
+                    // UserProfile 会被渲染在 User 的 <router-view> 中
+                    path: 'subRouterComp/:subId',
+                    component: subRouterComp
+                }
+            ]
         }
     ]
 })
