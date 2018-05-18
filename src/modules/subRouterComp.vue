@@ -26,6 +26,10 @@ export default {
             console.log(from, to)
         }
     },
+    beforeRouteEnter (to, from, next) {
+        console.log('sub comp route enter: ', this)
+        next()
+    },
      beforeRouteUpdate (to, from, next) {
          console.log(to, from, next)
     }

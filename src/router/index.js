@@ -9,8 +9,8 @@ import { Plugin1, Plugin2 } from '../plugins'
 import shiftComponent from '@/modules/shiftComponent'
 import watchComp from '@/modules/watch'
 import TestCreatreElmentComp from '@/modules/testCreateElement'
-import RouterTest from '@/modules/routerTest'
-import subRouterComp from '@/modules/subRouterComp'
+// import RouterTest from '@/modules/routerTest'
+// import subRouterComp from '@/modules/subRouterComp'
 
 Vue.use(Router)
 Vue.use(ElementUI)
@@ -48,7 +48,8 @@ Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
     console.log(toVal, fromVal)
 }
 console.log('<><<>>><>><>', Login, new TestCreatreElmentComp())
-export default new Router({
+let r = new Router({
+    mode: 'hash',
     routes: [
         {
             path: '/',
@@ -83,15 +84,36 @@ export default new Router({
         {
             path: '/:userId/routerTest/:password',
             name: 'routerTest',
-            component: RouterTest,
+            component: () => import('@/modules/routerTest'),
+            beforeEnter: (to, from, next) => {
+                console.log('BEFORE ENTER:parent', to.path)
+                next()
+            },
             children: [
                 {
                     // 当 /user/:id/profile 匹配成功，
                     // UserProfile 会被渲染在 User 的 <router-view> 中
                     path: 'subRouterComp/:subId',
-                    component: subRouterComp
+                    component: () => import('@/modules/subRouterComp'),
+                    beforeEnter: (to, from, next) => {
+                        console.log('BEFORE ENTER:subs', to.path)
+                        next()
+                    }
                 }
             ]
         }
     ]
+})
+export default r
+r.beforeEach((to, from, next) => {
+    console.log('->', to.path)
+    next()
+})
+r.beforeEach((to, from, next) => {
+    console.log('-->', to.path)
+    next()
+})
+r.beforeEach((to, from, next) => {
+    console.log('--->', to.path)
+    next()
 })
