@@ -1,6 +1,7 @@
 <template>
     <div @click="changeValue">
-         <h3>a: {{a}}</h3>
+        <h3>a: {{a}}</h3>
+        <h3>input element:<input :value="a"/></h3>
         <h3>b: {{b}}</h3>
         <h3>c: {{c}}</h3>
         <h3>d: {{d}}</h3>

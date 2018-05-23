@@ -51,7 +51,7 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       // {
-      //     test: /\.css$/,
+      //     test: /\.css?modules$/,
       //     use: ['style-loader', 'css-loader', 'postcss-loader']
       // },
       // {
