@@ -21,9 +21,25 @@ let FunctionalComp2 = {
     }
 }
 export default Vue.component('testCreateElement', {
+    data: function () {
+        return {
+            'willReRender': Math.random()
+        }
+    },
+    created: function () {
+        setTimeout(() => {
+            this.$data.willReRender = '333'
+            console.log('aaa')
+        }, 2000)
+        this.$on('triggerRerender', (e) => {
+            console.log(e)
+        })
+    },
     render: function (createElement) {
+        console.log('rendered')
         return createElement({
             template: `
+                <a style="cursor:pointer;" @click="triggerParentRerender">触发rerender</a>
                 <div @click="clickHandler">
                     <h1>This component is created by render function :):):)</h1>
                     <p>
@@ -46,6 +62,9 @@ export default Vue.component('testCreateElement', {
             methods: {
                 clickHandler: function () {
                     this.$data.statusNum = Math.random() * 1000
+                },
+                triggerParentRerender: function () {
+                    this.$emit('triggerRerender', Math.random())
                 }
             }
         }, {

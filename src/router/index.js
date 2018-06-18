@@ -9,6 +9,8 @@ import { Plugin1, Plugin2 } from '../plugins'
 import shiftComponent from '@/modules/shiftComponent'
 import watchComp from '@/modules/watch'
 import TestCreatreElmentComp from '@/modules/testCreateElement'
+import TestInject from '@/modules/TestInject'
+
 // import RouterTest from '@/modules/routerTest'
 // import subRouterComp from '@/modules/subRouterComp'
 
@@ -80,6 +82,11 @@ let r = new Router({
             path: '/createElement',
             name: 'testCreateElement',
             component: TestCreatreElmentComp
+        },
+        {
+            path: '/testInject',
+            name: 'testInject',
+            component: TestInject
         },
         {
             path: '/:userId/routerTest/:password',
