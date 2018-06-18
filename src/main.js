@@ -6,6 +6,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+Vue.config.errorHandler = function (err, vm, info) {
+    console.error('global error')
+}
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

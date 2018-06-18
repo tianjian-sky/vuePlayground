@@ -10,6 +10,7 @@ import shiftComponent from '@/modules/shiftComponent'
 import watchComp from '@/modules/watch'
 import TestCreatreElmentComp from '@/modules/testCreateElement'
 import TestInject from '@/modules/TestInject'
+import ErrorHandle from '@/modules/ErrorHandle'
 
 // import RouterTest from '@/modules/routerTest'
 // import subRouterComp from '@/modules/subRouterComp'
@@ -87,6 +88,11 @@ let r = new Router({
             path: '/testInject',
             name: 'testInject',
             component: TestInject
+        },
+        {
+            path: '/errorHandle',
+            name: 'errorHandle',
+            component: ErrorHandle
         },
         {
             path: '/:userId/routerTest/:password',
