@@ -1,3 +1,7 @@
+# refs
+
+``` javascript
+
 <template>
     <div>
         <h1>hello i'm parent</h1>
@@ -50,9 +54,4 @@ export default {
     }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>
-
-
+```
