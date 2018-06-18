@@ -11,6 +11,7 @@ import watchComp from '@/modules/watch'
 import TestCreatreElmentComp from '@/modules/testCreateElement'
 import TestInject from '@/modules/TestInject'
 import ErrorHandle from '@/modules/ErrorHandle'
+import Attrs from '@/modules/Attrs'
 
 // import RouterTest from '@/modules/routerTest'
 // import subRouterComp from '@/modules/subRouterComp'
@@ -93,6 +94,11 @@ let r = new Router({
             path: '/errorHandle',
             name: 'errorHandle',
             component: ErrorHandle
+        },
+        {
+            path: '/attrs',
+            name: 'attrs',
+            component: Attrs
         },
         {
             path: '/:userId/routerTest/:password',
