@@ -19,9 +19,9 @@
           <div slot="s1">插入的内容2</div>
           <div>(*******)</div>
           <div slot="xxx">fuck you!</div>
-            <p slot-scope="props"   slot="scopeSlot">
-                <span>hello from parent</span>
-                <span>{{ props.text }}</span>
+            <p slot-scope="slotProp"   slot="scopeSlot">
+                <span style="color:red;">SCOPED_SLOT:hello from parent</span><br>
+                <span>{{ slotProp.text }}</span>
             </p>
       </slotTest>
   </div>

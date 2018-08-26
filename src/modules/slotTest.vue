@@ -5,7 +5,6 @@
             只有在没有要分发的内容时才会显示。
         </slot>
         <br/>
-        <br/>
          <slot>
             只有在没有要分发的内容时才会显示。
         </slot>
@@ -24,7 +23,9 @@
 export default {
     name: 'slotTest',
     data: () => {
-        return {}
+        return {
+            noneScopeSlotData: 1
+        }
     },
     methods: {}
 }
