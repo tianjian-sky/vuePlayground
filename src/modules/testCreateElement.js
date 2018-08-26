@@ -4,7 +4,7 @@ import Vue from 'vue'
 Vue.component('FunctionalComp', {
     functional: true,
     render: (h, context) => { // 函数式组件render方法会传入二参context
-        console.log(h, context)
+        console.log('1', h, context)
         return h({
             template: `<h3>Hello, i'm functional comp</h3>`
         })
@@ -13,8 +13,12 @@ Vue.component('FunctionalComp', {
 // 函数式组件写法2
 let FunctionalComp2 = {
     name: 'FunctionalComp2',
+    props: {
+        'functionProps1': 1,
+        'functionProps2:': 2
+    },
     render: (h, context) => { // 函数式组件render方法会传入二参context
-        console.log(h, context)
+        console.log('2', h, context)
         return h({
             template: `<h3>Hello, i'm functional comp2</h3>`
         })
@@ -39,8 +43,9 @@ export default Vue.component('testCreateElement', {
         console.log('rendered')
         return createElement({
             template: `
-                <a style="cursor:pointer;" @click="triggerParentRerender">触发rerender</a>
+
                 <div @click="clickHandler">
+                  <a style="cursor:pointer;" @click="triggerParentRerender">触发rerender</a>
                     <h1>This component is created by render function :):):)</h1>
                     <p>
                         {{statusNum}}

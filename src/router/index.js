@@ -13,6 +13,7 @@ import TestInject from '@/modules/TestInject'
 import TestSync from '@/modules/TestSync'
 import ErrorHandle from '@/modules/ErrorHandle'
 import Attrs from '@/modules/Attrs'
+import Filters from '@/modules/Filters'
 
 // import RouterTest from '@/modules/routerTest'
 // import subRouterComp from '@/modules/subRouterComp'
@@ -105,6 +106,11 @@ let r = new Router({
             path: '/attrs',
             name: 'attrs',
             component: Attrs
+        },
+        {
+            path: '/filters',
+            name: 'filters',
+            component: Filters
         },
         {
             path: '/:userId/routerTest/:password',
