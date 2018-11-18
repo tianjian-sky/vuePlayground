@@ -13,6 +13,29 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+const compiler = new webpack.Compiler();
+
+function BasicPlugin () {
+
+}
+
+// Webpack 会调用 BasicPlugin 实例的 apply 方法给插件实例传入 compiler 对象
+BasicPlugin.prototype.apply = function (){
+  // console.log('initial:', compiler)
+  // compiler.plugin('compilation',function(compilation) {
+  //   console.log('compilation:')
+  // })
+  compiler.plugin('beforeCompile', (compilation, callback) => {
+    console.log('Have I reached here?');
+})
+  // compiler.hooks.buildModule.tap(function (m) {
+  //   console.log('buildModule', m)
+  // })
+  // compiler.plugin('beforeCompile', (compilation) => {
+  //   console.log('Have I reached here?');
+  // })
+}
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -45,6 +68,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new BasicPlugin(),
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),

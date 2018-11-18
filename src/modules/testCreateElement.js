@@ -12,6 +12,7 @@ Vue.component('FunctionalComp', {
 })
 // 函数式组件写法2
 let FunctionalComp2 = {
+    functional: true,
     name: 'FunctionalComp2',
     props: {
         'functionProps1': 1,
@@ -19,8 +20,9 @@ let FunctionalComp2 = {
     },
     render: (h, context) => { // 函数式组件render方法会传入二参context
         console.log('2', h, context)
+        let props = context.props.functionProps1
         return h({
-            template: `<h3>Hello, i'm functional comp2</h3>`
+            template: `<h3>${props}Hello, i'm functional comp2</h3>`
         })
     }
 }

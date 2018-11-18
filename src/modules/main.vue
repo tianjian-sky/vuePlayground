@@ -14,9 +14,9 @@
         </span>
       </el-dialog>
       <my-component/>
-      <slotTest>
-          <div slot="s2">插入的内容</div>
-          <div slot="s1">插入的内容2</div>
+      <slotTest class="slt0">
+          <h2 slot="s2">:插入的内容2</h2>
+          <div slot="s1" class="slt3">插入的内容2</div>
           <div>(*******)</div>
           <div slot="xxx">fuck you!</div>
             <p slot-scope="slotProp"   slot="scopeSlot">

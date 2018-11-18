@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Router from '@/../node_modules/vue-router/dist/vue-router'
+// import HelloWorld from '@/components/HelloWorld'
 import Login from '@/modules/Login'
 import Main from '@/modules/Main'
 import ElementUI from 'element-ui'
@@ -14,6 +14,31 @@ import TestSync from '@/modules/TestSync'
 import ErrorHandle from '@/modules/ErrorHandle'
 import Attrs from '@/modules/Attrs'
 import Filters from '@/modules/Filters'
+import AboutKey from '@/modules/AboutKey'
+import Functional from '@/modules/Functional'
+import testExtend from '@/modules/testExtend'
+
+const HelloWorld = r => require.ensure([], () => {
+    return require('@/components/HelloWorld')
+}, 'HelloWorld')
+
+const aysTest = r => require.ensure([], () => {
+    let m = require('@/modules/asyncComp').default.m1
+    return m
+}, 'aysTest')
+
+
+console.log('88', HelloWorld)
+// const aysTest = require('@/modules/asyncComp')
+// console.log('|||', aysTest)
+// function r () {
+//     var args = [], len = arguments.length;
+//     while ( len-- ) args[ len ] = arguments[ len ];
+
+//     if (called) { return }
+//     called = true;
+//     return fn.apply(this, args)
+// }
 
 // import RouterTest from '@/modules/routerTest'
 // import subRouterComp from '@/modules/subRouterComp'
@@ -57,6 +82,11 @@ console.log('<><<>>><>><>', Login, new TestCreatreElmentComp())
 let r = new Router({
     mode: 'hash',
     routes: [
+        {
+            path: '/asyncTest',
+            name: 'HelloWorld',
+            component: aysTest
+        },
         {
             path: '/',
             name: 'HelloWorld',
@@ -113,6 +143,21 @@ let r = new Router({
             component: Filters
         },
         {
+            path: '/aboutKey',
+            name: 'aboutKey',
+            component: AboutKey
+        },
+        {
+            path: '/functional',
+            name: 'functional',
+            component: Functional
+        },
+        {
+            path: '/extend',
+            name: 'extend',
+            component: testExtend
+        },
+        {
             path: '/:userId/routerTest/:password',
             name: 'routerTest',
             component: () => import('@/modules/routerTest'),
@@ -136,6 +181,9 @@ let r = new Router({
     ]
 })
 export default r
+r.onReady((r) => {
+    console.log('router ready hook:', r)
+})
 r.beforeEach((to, from, next) => {
     console.log('->', to.path)
     next()
