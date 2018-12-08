@@ -28,6 +28,9 @@ let funcComp = {
     },
     created () {
         console.log('functional component context:', this)
+    },
+    mounted () {
+        alert('mounted')
     }
 }
 

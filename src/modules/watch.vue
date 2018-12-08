@@ -6,6 +6,15 @@
         <h3>c: {{c}}</h3>
         <h3>d: {{d}}</h3>
         <h3>e: {{e}}</h3>
+        <hr/>
+        <h3>Test React Obj</h3>
+        <div>{{$store.state.reactObj.existKey}}</div>
+        <div>New stateObj Key: {{newStateObjKey}}</div>
+        <button @click.stop="addkey">add key to state obj</button>
+        <h3>Test Empty Obj</h3>
+        <div>New empty Obj Key: {{emptyObj.a}}</div>
+        <div>New empty Obj Key: {{emptyObj.b}}</div>
+        <button @click.stop="setEmptyObj">add key to empty data obj</button>
     </div>
 </template>
 <script>
@@ -14,6 +23,20 @@ export default {
         changeValue: function () {
             this.$data.a = Math.random() * 1000
             this.$data.e.f.g = Math.random() * 999
+        },
+        addkey () {
+            // this.$store.state.reactObj.newKey = 'aa' 1.不触发响应式
+            this.$store.commit('updateReactObj', {
+                newKey: '999'
+            })
+        },
+        setEmptyObj () {
+            // this.emptyObj = {
+            //     a: 'aaa',
+            //     b: 'bbb',
+            //     c: 'ccc'
+            // }
+            console.log('nnnaaa', this)
         }
     },
     data: function () {
@@ -26,6 +49,18 @@ export default {
                 f: {
                     g: 5
                 }
+            },
+            emptyObj: {
+
+            }
+        }
+    },
+    computed: {
+        newStateObjKey () {
+            if (this.$store.state.reactObj.newKey) {
+                return 'has New Key'
+            } else {
+                return 'no new key'
             }
         }
     },

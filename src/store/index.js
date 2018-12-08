@@ -8,7 +8,10 @@ const store = new Vuex.Store({
         count: 999,
         statement: 'Hello World',
         info: {},
-        info2: null
+        info2: null,
+        reactObj: {
+            existKey: 'existKey'
+        }
     },
     mutations: {
         updateCount (state, payLoad) {
@@ -25,8 +28,12 @@ const store = new Vuex.Store({
         },
         updateItem (s, p) {
             s.info[p.k] = p.v
+        },
+        updateReactObj (s, p) {
+            for (var k in p) {
+                s.reactObj[k] = p[k]
+            }
         }
-
     }
 })
 
