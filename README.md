@@ -31,4 +31,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 >   “path”仅仅告诉Webpack结果存储在哪里，然而“publicPath”项则被许多Webpack的插件用于在生产模式下更新内嵌到css、html文件里的url值。
 >   如设置为public path后，主脚本插入的路径变由默认的./app.js变为/aaa/app.js,又如当设置public path为不同的值以后，使用style-loader插入的style脚本内，路径都会自动加上public path前缀（过于小的图片由于使用url-loader因此直接内联在样式中url(data:image/png)）直接写在html模版文件里的url则不做转换。
 
-### husky 1
+### husky 2
