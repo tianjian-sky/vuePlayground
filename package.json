@@ -13,6 +13,11 @@
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
   },
+  "husky":{
+    "hooks": {
+      "post-commit": "ls"
+    }
+  },
   "dependencies": {
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
